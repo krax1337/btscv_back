@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
+  url: <%= ENV.fetch("redis://redistogo:e254595468efffe210b5769ad39bda70@cod.redistogo.com:11725/") { "redis://redistogo:e254595468efffe210b5769ad39bda70@cod.redistogo.com:11725/" } %>
   channel_prefix: silver-octo-invention_production
