@@ -1,10 +1,21 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  email           :string           default(""), not null
+#  password_digest :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   include ActiveModel::Serializers::JSON
   has_secure_password
   has_many :resumes
   
 
-  enum role: %i[user manager admin].freeze
+  # enum role: %i[user manager admin].freeze
 
   validates :email,
             format: { with: URI::MailTo::EMAIL_REGEXP },
@@ -12,7 +23,7 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
 
   def attributes
-    { id: id, email: email, role: role }
+    { id: id, email: email}
   end
 
   def generate_password_token!

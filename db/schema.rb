@@ -10,7 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_22_175133) do
+ActiveRecord::Schema.define(version: 2018_07_15_184320) do
+
+  create_table "educations", force: :cascade do |t|
+    t.integer "resume_id"
+    t.string "institute_name"
+    t.string "degree"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.float "gpa"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "experinces", force: :cascade do |t|
+    t.integer "resume_id"
+    t.string "company_name"
+    t.string "designation"
+    t.text "job_description"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.boolean "current"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "resumes", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "phone"
+    t.string "address"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.integer "resume_id"
+    t.string "skill"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

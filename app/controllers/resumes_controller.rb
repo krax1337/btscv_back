@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
     before_action :authorize_access_request!
-    before_action :set_todo, only: [:show, :update, :delete]
+    before_action :set_resume, only: [:show, :update, :delete]
 
 
     def create
@@ -20,7 +20,7 @@ class ResumesController < ApplicationController
       user = findUser
       resume = user.resumes.where(id: params[:resume_id])
       if resume
-        render json: resume
+		render json: resume
       else
         render json: { errors: @resume.errors.full_messages }, status: :errors
       end
@@ -48,7 +48,7 @@ class ResumesController < ApplicationController
       end
 
     def resume_params
-        params.permit(:user_id, :firstname, :lastname, :address, :phone, :website)
+        params.permit(current_user, :firstname, :lastname, :address, :phone, :website)
     end
   end
   
