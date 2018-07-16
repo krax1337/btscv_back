@@ -67,6 +67,8 @@ Rails.application.configure do
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
+  config.redis_host   = " redis://redistogo:e254595468efffe210b5769ad39bda70@cod.redistogo.com:11725/"
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
